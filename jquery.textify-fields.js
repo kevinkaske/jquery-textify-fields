@@ -5,7 +5,7 @@
         placeholderText = $(this).attr('placeholder');
         thisItem = $(this);
         thisItem.hide();
-        thisItem.after('<span style="cursor:pointer;">Click to add ' + placeholderText + '</span>');
+        thisItem.after('<span style="cursor:pointer; color: #696969;">Add a ' + placeholderText + '</span>');
         thisItem.next().click(function(){
           //Hide text and Show field
           $(this).hide();
