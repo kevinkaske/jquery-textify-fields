@@ -7,6 +7,7 @@ The original inspiration for this plugin comes from [here](http://37signals.com/
 Each input field that is blank and has this plugin assigned to it through the jQuery selector will be editable when clicked.
 
 ## Usage
+0. Download and reference the JavaScript and CSS files manually in your HTML
 1. Add class and placeholder attribute to each field you want to be Edit on Click. Example: `<input name="first_name" type="text" calss="clicktoedit" placeholder="First Name">`
 2. Call plugin through jQuery selector. Example:
 ```javascript
