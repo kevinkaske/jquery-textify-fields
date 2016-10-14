@@ -1,5 +1,7 @@
 (function ( $ ) {
   $.fn.textifyfields = function() {
+    var opts = $.extend( {}, $.fn.textifyfields.defaults, options );
+
     this.each(function(ev){
       thisItem = $(this);
 
@@ -8,7 +10,7 @@
         if(!thisItem.val()){
           placeholderText = thisItem.attr('placeholder');
           thisItem.addClass('textifyHidden');
-          thisItem.after('<span style="cursor:pointer; color: #696969;">Add a ' + placeholderText + '</span>');
+          thisItem.after('<span style="' + $.fn.textifyfields.splashStyle + '">Add a ' + placeholderText + '</span>');
           thisItem.next().click(function(){
             //Hide text and Show field
             $(this).hide();
@@ -35,7 +37,7 @@
       }else if(thisItem.is('div')){ //Else if this is div
         thisDiv = thisItem;
         placeholderText = thisDiv.find('input').filter(':visible:first').attr('placeholder');
-        thisDiv.after('<div style="cursor:pointer; color: #696969;" class="' + thisItem.attr('class') + '">Add a ' + placeholderText + '</div>');
+        thisDiv.after($.fn.textifyfields.splashPreappend + '<div style="' + $.fn.textifyfields.splashStyle + '" class="' + thisItem.attr('class') + '">Add a ' + placeholderText + '</div>' + $.fn.textifyfields.splashAppend);
         thisDiv.addClass('textifyHidden');
 
         thisSplash = thisDiv.next();
@@ -85,3 +87,10 @@
     return this;
   };
 }( jQuery ));
+
+// Plugin defaults – added as a property on our plugin function.
+$.fn.textifyfields.defaults = {
+    splashPreappend: "",
+    splashAppend: "",
+    splashStyle: "cursor:pointer; color: #696969;"
+};
